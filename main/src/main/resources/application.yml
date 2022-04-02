@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: card
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      driver-class-name: oracle.jdbc.OracleDriver
+  datasource:
+    #   url: jdbc:oracle:thin:@(DESCRIPTION=(RETRY_COUNT=180)(FAILOVER=ON)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.100.130)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.100.120)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=GALAXYPDB)))
+    url: jdbc:oracle:thin:@//192.168.100.120:1521/GALAXYPDB
+#    url: jdbc:oracle:thin:@(DESCRIPTION=(RETRY_COUNT=180)(FAILOVER=ON)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=gxy.tejaratbank.ir)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=gxydr.tejaratbank.ir)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=tid-gxyds.tejaratbank.ir)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=scan_prim_ac)))
+    username: chm
+    password: chm2
+  cache:
+    type: simple
