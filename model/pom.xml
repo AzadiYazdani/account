@@ -7,9 +7,13 @@
         <groupId>com.reloadly</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>model</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -2,16 +2,15 @@ package com.reloadly.account.service;
 
 import com.reloadly.account.database.entity.AccountEntity;
 import com.reloadly.account.database.entity.CustomerEntity;
-import com.reloadly.account.database.entity.PersonEntity;
 import com.reloadly.account.database.repository.AccountRepository;
 import com.reloadly.account.database.repository.CustomerRepository;
 import com.reloadly.account.mappers.AccountMapper;
-import create.AccountCreateRequest;
-import create.AccountCreateResponse;
+import com.reloadly.account.create.AccountCreateRequest;
+import com.reloadly.account.create.AccountCreateResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import update.AccountUpdateRequest;
-import update.AccountUpdateResponse;
+import com.reloadly.account.update.AccountUpdateRequest;
+import com.reloadly.account.update.AccountUpdateResponse;
 
 @Service
 @Validated
@@ -33,15 +32,15 @@ public class AccountServiceImpl implements AccountService {
         //check validity of identity number
 
         //check if the person exist
-        CustomerEntity customerEntity = customerRepository.findByIdentityNumber(request.getOwner().getIdentityNumber());
+        CustomerEntity customerEntity = customerRepository.findByCustomerNumber(request.getOwner().getCustomerNumber());
 
         if (customerEntity == null) {
-            //create if it doesn't exit
-            CustomerEntity.
-        }else {
+            // todo
+            //throw new Exception("Customer not exists");
+        } else {
             //check if the account type exist for this customer
-            for (AccountEntity accountEntity:customerEntity.getAccounts()) {
-                if(accountEntity.getAccountType() == request.getAccountType()) {
+            for (AccountEntity accountEntity : customerEntity.getAccounts()) {
+                if (accountEntity.getAccountType() == request.getAccountType()) {
                     // todo
 //                    throw new Exception("Account Already exists");
                 }
@@ -51,14 +50,14 @@ public class AccountServiceImpl implements AccountService {
         AccountEntity accountEntity = accountMapper.to(request);
 
         //create account number
-        String accountNumber = "";
-        accountEntity.setAccountNumber(accountNumber);
+        Integer accountNumber = accountRepository.findMaxAccountNumber();
+        accountEntity.setAccountNumber(accountNumber++);
 
         //save into db
         accountRepository.save(accountEntity);
 
         //return account number to the client
-        return null;
+        return accountMapper.to(accountEntity);
     }
 
     @Override

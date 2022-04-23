@@ -27,7 +27,4 @@ public enum AccountType {
         return this.name();
     }
 
-    public String getTitle() {
-        return this.toString();
-    }
 }

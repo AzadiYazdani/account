@@ -9,14 +9,15 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-@Builder(setterPrefix = "with", toBuilder = true, access = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@Builder(setterPrefix = "with", builderMethodName = "newInstance")
 public class CustomerEntity {
 
     @Id
     private long id;
 
     @Column
-    private String customerNumber;
+    private int customerNumber;
 
     @Column
     private String firstName;

@@ -7,7 +7,9 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(setterPrefix = "with", toBuilder = true, access = AccessLevel.PRIVATE)
-public class Person {
+public class Customer {
+
+    private String CustomerNumber;
     private String firstName;
     private String lastName;
     private String identityNumber;

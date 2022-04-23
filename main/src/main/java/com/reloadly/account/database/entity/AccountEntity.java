@@ -2,7 +2,6 @@ package com.reloadly.account.database.entity;
 
 import com.reloadly.account.common.AccountType;
 import com.reloadly.account.common.Balance;
-import com.reloadly.account.common.Person;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,6 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder(setterPrefix = "with", toBuilder = true, access = AccessLevel.PRIVATE)
 @Table(catalog = "Reloadly_Account")
 public class AccountEntity {
@@ -20,14 +20,14 @@ public class AccountEntity {
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="OWNER_ID")
-    private PersonEntity owner;
+    private CustomerEntity owner;
 
     @Column
-    private String accountNumber;
+    private Integer accountNumber;
 
     @Column
     private AccountType accountType;
 
     @Column
-    private Balance balance;
+    private Double balance;
 }

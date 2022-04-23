@@ -1,11 +1,11 @@
 spring:
   application:
-    name: card
+    name: account
   profiles:
     active: dev
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
       driver-class-name: oracle.jdbc.OracleDriver
   datasource:
     #   url: jdbc:oracle:thin:@(DESCRIPTION=(RETRY_COUNT=180)(FAILOVER=ON)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.100.130)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.100.120)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=GALAXYPDB)))
